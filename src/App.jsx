@@ -3,7 +3,7 @@ import axios from 'axios';
 import { BookOpen, Plus, Trash2, Edit2, Loader2 } from 'lucide-react';
 import logo from './assets/Logo-Unigoias-vetorizada.svg';
 
-const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000/api';
+const API_URL = 'https://sistemas-distribuidos-backend.onrender.com/api';
 
 function App() {
   const [items, setItems] = useState([]);
@@ -51,8 +51,8 @@ function App() {
 
   const handleEdit = (item) => {
     setEditingId(item.id);
-    setFormData({ 
-      title: item.title || '', 
+    setFormData({
+      title: item.title || '',
       description: item.description || '',
       author: item.author || ''
     });
@@ -93,7 +93,7 @@ function App() {
                 placeholder="Ex: Sistema de Gestão Distribuído"
               />
             </div>
-            
+
             <div className="form-group">
               <label htmlFor="author">Autor(es)</label>
               <input
@@ -132,7 +132,7 @@ function App() {
             <BookOpen size={24} style={{ color: 'var(--primary-light)' }} />
             Acervo de Projetos
           </h2>
-          
+
           {loading ? (
             <div className="empty-state">
               <Loader2 className="spin" size={32} />
@@ -150,20 +150,20 @@ function App() {
                     <h3>{item.title || 'Sem título'}</h3>
                     <p>{item.description || 'Sem descrição'}</p>
                     <div className="item-meta">
-                      <span>Autor: {item.author || 'N/A'}</span> • 
+                      <span>Autor: {item.author || 'N/A'}</span> •
                       <span> Adicionado em: {new Date(item.createdAt).toLocaleDateString('pt-BR')}</span>
                     </div>
                   </div>
                   <div className="item-actions">
-                    <button 
-                      onClick={() => handleEdit(item)} 
+                    <button
+                      onClick={() => handleEdit(item)}
                       className="btn btn-edit"
                       title="Editar"
                     >
                       <Edit2 size={18} />
                     </button>
-                    <button 
-                      onClick={() => handleDelete(item.id)} 
+                    <button
+                      onClick={() => handleDelete(item.id)}
                       className="btn btn-danger"
                       title="Excluir"
                     >
